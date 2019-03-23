@@ -20,13 +20,17 @@ import com.google.android.gms.tasks.Task;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "TAG";
+    private static final String USER_NAME = "USER_NAME";
     private static final int RC_SIGN_IN = 100;
     GoogleSignInClient mGoogleSignInClient;
+    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //getSupportActionBar().setIcon(R.mipmap.ecovists);
 
         // Configure sign-in to request the user's ID, email address, and basic
 
@@ -47,10 +51,17 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         } );
+
+
+
     }
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
+        Intent i= new Intent(MainActivity.this,HomeActivity.class);
+        i.putExtra(USER_NAME,name);
+        startActivity(i);
+        finish();
     }
     @Override
     protected void onStart() {
@@ -80,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+             name= account.getDisplayName();
+
 
             // Signed in successfully, show authenticated UI.
             updateUI(account);

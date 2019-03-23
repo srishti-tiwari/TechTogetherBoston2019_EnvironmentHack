@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "981601270829",
+    "firebase_url": "https://ecotrackr.firebaseio.com",
+    "project_id": "ecotrackr",
+    "storage_bucket": "ecotrackr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981601270829:android:ec1484f3cf6d8994",
+        "android_client_info": {
+          "package_name": "techtogether.io.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "981601270829-59hk1mlj4c4b7so8nfmbtd110424ggeo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "techtogether.io.myapplication",
+            "certificate_hash": "3311c8fa8911c2d7936aa93244283e5860668e3c"
+          }
+        },
+        {
+          "client_id": "981601270829-lb1i1dmpu4trgvjmue57oc1k299sici1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBPavwLYCfptsvScSlshHjgzX6aNeOtsY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "981601270829-lb1i1dmpu4trgvjmue57oc1k299sici1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
