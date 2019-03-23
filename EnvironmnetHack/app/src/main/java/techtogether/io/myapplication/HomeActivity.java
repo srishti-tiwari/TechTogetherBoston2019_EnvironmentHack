@@ -41,7 +41,6 @@ public class HomeActivity extends AppCompatActivity {
                 .requestEmail()
                 .build();
         googleSignInClient = GoogleSignIn.getClient(this, gso);
-        //imageViewPic=findViewById(R.id.imageViewPic);
 
         textViewuser.setText(userName);
         buttonsignout.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +69,7 @@ public class HomeActivity extends AppCompatActivity {
                 .requestEmail()
                 .build();
 
-        //mGoogleSignInClient = GoogleSignIn.getClient(ListViewDisp.this, gso);
+
         googleSignInClient.signOut()
                 .addOnCompleteListener(HomeActivity.this, new OnCompleteListener<Void>() {
                     @Override

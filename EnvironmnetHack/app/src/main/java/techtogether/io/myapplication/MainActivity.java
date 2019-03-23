@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     final static int REQ_CODE=100;
     FirebaseAuth mAuth;
-    final static String USERNAME="username",IMAGEURL="imageUrl";
+    final static String USERNAME="username",IMAGEURL="imageUrl",EMAIL="email";
     SignInButton buttonLogin;
     GoogleSignInClient googleSignInClient;
     @Override
@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             String name=user.getDisplayName();
                             String imageUrl="none";
+                            String email=user.getEmail();
                             if(user.getPhotoUrl()!=null) {
                                 imageUrl = user.getPhotoUrl().toString();
                             }
@@ -78,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent=new Intent(MainActivity.this,HomeActivity.class);
                             intent.putExtra(USERNAME,name);
                             intent.putExtra(IMAGEURL,imageUrl);
+                            intent.putExtra(EMAIL,email);
                             startActivity(intent);
                         }
                         else {
