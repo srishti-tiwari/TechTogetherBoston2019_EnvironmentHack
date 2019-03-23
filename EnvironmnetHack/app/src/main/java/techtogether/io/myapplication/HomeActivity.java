@@ -30,7 +30,7 @@ public class HomeActivity extends AppCompatActivity {
 
         TextView textViewwelcome=findViewById(R.id.textViewwelcome);
         TextView textViewuser=findViewById(R.id.textViewuser);
-        Button buttonsignout=findViewById(R.id.buttonsignout);
+        Button buttonprofile=findViewById(R.id.buttonprofile);
         ImageView imageViewuser=findViewById(R.id.imageViewuser);
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
@@ -43,10 +43,12 @@ public class HomeActivity extends AppCompatActivity {
         googleSignInClient = GoogleSignIn.getClient(this, gso);
 
         textViewuser.setText(userName);
-        buttonsignout.setOnClickListener(new View.OnClickListener() {
+        buttonprofile.setOnClickListener(new View.OnClickListener() {
                                              @Override
                                              public void onClick(View v) {
-                                                 signOut();
+
+                                                 Intent i=new Intent(HomeActivity.this,PersonalDetailActivity.class);
+                                                 startActivity(i);
                                              }
                                          });
        if(imageUrl.equals("none")){
@@ -54,15 +56,16 @@ public class HomeActivity extends AppCompatActivity {
         }
         else
             Glide.with(this).load(imageUrl).into(imageViewuser);
-        buttonsignout.setOnClickListener(new View.OnClickListener() {
+        buttonprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signOut();
+                Intent i=new Intent(HomeActivity.this,PersonalDetailActivity.class);
+                startActivity(i);
             }
         });
 
 }
-    private void signOut() {
+    /*private void signOut() {
         FirebaseAuth.getInstance().signOut();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -77,6 +80,6 @@ public class HomeActivity extends AppCompatActivity {
                         Intent intent = new Intent(HomeActivity.this, MainActivity.class);
                         startActivity(intent);
                     }
-                });
+                });*/
     }
-}
+
