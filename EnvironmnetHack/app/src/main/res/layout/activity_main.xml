@@ -34,7 +34,7 @@
         android:layout_width="190dp"
         android:layout_height="37dp"
         android:layout_marginTop="16dp"
-        android:text="Ecovists"
+        android:text="EcoTrackr"
         android:textSize="30sp"
         android:textStyle="bold"
         app:fontFamily="casual"
