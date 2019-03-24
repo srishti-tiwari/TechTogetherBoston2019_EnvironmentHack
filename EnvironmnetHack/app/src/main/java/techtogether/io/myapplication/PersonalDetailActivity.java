@@ -23,6 +23,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PersonalDetailActivity extends AppCompatActivity {
 
     DatabaseReference mRootRef;
@@ -30,64 +33,61 @@ public class PersonalDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_personal_detail);
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_personal_detail );
 
-        Button submitButton = findViewById(R.id.submitButton);
-        final Button signoutButton = findViewById(R.id.signoutButton);
-        final EditText name = findViewById(R.id.nameValTextView);
-        final EditText location = findViewById(R.id.locationValTextView2);
-        final EditText gender = findViewById(R.id.genderValTextView);
-        final EditText birthday = findViewById(R.id.birthdayValTextView);
-       // String email = getIntent().getExtras().getString(MainActivity.EMAIL);
+        Button submitButton = findViewById( R.id.submitButton );
+        final Button signoutButton = findViewById( R.id.signoutButton );
+        final EditText name = findViewById( R.id.nameValTextView );
+        final EditText location = findViewById( R.id.locationValTextView2 );
+        final EditText gender = findViewById( R.id.genderValTextView );
+        final EditText birthday = findViewById( R.id.birthdayValTextView );
+        final String email = getIntent().getExtras().getString( MainActivity.EMAIL );
 
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder( GoogleSignInOptions.DEFAULT_SIGN_IN )
+                .requestIdToken( getString( R.string.default_web_client_id ) )
                 .requestEmail()
                 .build();
 
-        googleSignInClient = GoogleSignIn.getClient(this, gso);
+        googleSignInClient = GoogleSignIn.getClient( this, gso );
 
-        
 
-        submitButton.setOnClickListener(new View.OnClickListener() {
+        submitButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //get values from textboxes + email
                 //do some inserts to firebase
 
                 mRootRef = FirebaseDatabase.getInstance().getReference();
-
+                List<Category> categoryList = new ArrayList<Category>();
+                categoryList.add( new Category( "Water Management", null ) );
+                categoryList.add( new Category( "Energy Conservation", null ) );
                 String id = mRootRef.push().getKey();
-                User user = new User(name.getText().toString(), location.getText().toString(), gender.getText().toString(), birthday.getText().toString());
-                user.setName(name.getText().toString());
-                user.setLocation(location.getText().toString());
-                user.setGender(gender.getText().toString());
-                user.setBirthday(birthday.getText().toString());
-                mRootRef.child("users").child(id).setValue(user);
-                Toast.makeText(getApplicationContext(), "Added to the DB!", Toast.LENGTH_SHORT).show();
+                User user = new User( name.getText().toString(), location.getText().toString(), gender.getText().toString(), birthday.getText().toString(), categoryList, email );
+                mRootRef.child( "users" ).child( id ).setValue( user );
+                Toast.makeText( getApplicationContext(), "Added to the DB!", Toast.LENGTH_SHORT ).show();
             }
-        });
-        signoutButton.setOnClickListener(new View.OnClickListener() {
+        } );
+        signoutButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                        .requestIdToken(getString(R.string.default_web_client_id))
+                GoogleSignInOptions gso = new GoogleSignInOptions.Builder( GoogleSignInOptions.DEFAULT_SIGN_IN )
+                        .requestIdToken( getString( R.string.default_web_client_id ) )
                         .requestEmail()
                         .build();
 
 
                 googleSignInClient.signOut()
-                        .addOnCompleteListener(PersonalDetailActivity.this, new OnCompleteListener<Void>() {
+                        .addOnCompleteListener( PersonalDetailActivity.this, new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-                                Intent intent = new Intent(PersonalDetailActivity.this, MainActivity.class);
-                                startActivity(intent);
+                                Intent intent = new Intent( PersonalDetailActivity.this, MainActivity.class );
+                                startActivity( intent );
                             }
-                        });
+                        } );
             }
-        });
+        } );
 
 
         //findViewById( )
