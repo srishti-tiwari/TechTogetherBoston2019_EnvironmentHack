@@ -48,16 +48,15 @@ public class HomeActivity extends AppCompatActivity implements IClickEvents{
         TextView textViewuser=findViewById(R.id.textViewuser);
         Button buttonprofile=findViewById(R.id.buttonprofile);
         ImageView imageViewuser=findViewById(R.id.imageViewuser);
+        Button impactButton = findViewById( R.id.impactButton );
 
         //dummy data
-        toDoTaskList.add(new ToDoTask("A"));
-        toDoTaskList.add(new ToDoTask("B"));
-        toDoTaskList.add(new ToDoTask("C"));
-        toDoTaskList.add(new ToDoTask("D"));
-        toDoTaskList.add(new ToDoTask("E"));
-        toDoTaskList.add(new ToDoTask("F"));
-        toDoTaskList.add(new ToDoTask("G"));
-        toDoTaskList.add(new ToDoTask("H"));
+        toDoTaskList.add(new ToDoTask("Turn off the heater or AC, when not required."));
+        toDoTaskList.add(new ToDoTask("Install Solar Panel"));
+        toDoTaskList.add(new ToDoTask("Use Solar panel"));
+        toDoTaskList.add(new ToDoTask("Check water leakage."));
+        toDoTaskList.add(new ToDoTask("Clean a beach or bank of a water body for 1 hour"));
+
 
         // add dependency in build.gradle app    implementation 'com.android.support:recyclerview-v7:28.0.0'
         mRecyclerView = findViewById(R.id.my_recycler_view);
@@ -73,6 +72,22 @@ public class HomeActivity extends AppCompatActivity implements IClickEvents{
                 toast.show();
             }
         });
+
+        impactButton.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HomeActivity.this, ImpactActivity.class);
+                startActivity(i);
+            }
+        } );
+
+        findViewById( R.id.button).setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HomeActivity.this, CharityActivity.class);
+                startActivity(i);
+            }
+        } );
 
 
         ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);

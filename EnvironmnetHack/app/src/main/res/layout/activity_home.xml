@@ -8,11 +8,10 @@
 
     <TextView
         android:id="@+id/textViewwelcome"
-        android:layout_width="88dp"
+        android:layout_width="10dp"
         android:layout_height="48dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
-        android:text="Welcome"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imageViewuser"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,6 +22,7 @@
         android:layout_height="47dp"
         android:layout_marginTop="28dp"
         android:text="User"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textViewwelcome"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,6 +34,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/colorPrimary"
         android:text="Profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -53,11 +54,11 @@
     <TextView
         android:id="@+id/textView3"
         android:layout_width="199dp"
-        android:layout_height="47dp"
+        android:layout_height="36dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
         android:text="Support your causes"
-        android:textSize="21sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/my_recycler_view" />
@@ -82,7 +83,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Today"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -120,14 +120,13 @@
         android:id="@+id/impactButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="@color/colorPrimary"
-        android:text="Show my impact!"
+        android:text="Show the impact!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView7"

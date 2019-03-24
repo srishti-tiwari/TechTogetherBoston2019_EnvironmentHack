@@ -42,7 +42,12 @@ public class PersonalDetailActivity extends AppCompatActivity {
         final EditText location = findViewById( R.id.locationValTextView2 );
         final EditText gender = findViewById( R.id.genderValTextView );
         final EditText birthday = findViewById( R.id.birthdayValTextView );
-        final String email = getIntent().getExtras().getString( MainActivity.EMAIL );
+        final String email;
+       /* if( null != getIntent().getExtras().getString( MainActivity.EMAIL )){
+            email = getIntent().getExtras().getString( MainActivity.EMAIL );
+        }*/
+            email = "dummy@gmail.com";
+
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder( GoogleSignInOptions.DEFAULT_SIGN_IN )
                 .requestIdToken( getString( R.string.default_web_client_id ) )
